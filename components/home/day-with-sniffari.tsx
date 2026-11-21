@@ -34,7 +34,7 @@ const moments = [
     title: "By lunchtime, curiosity is back.",
     description:
       "A fresh target changes the route through the house. Your dog follows the new trail from room to room, guided by scent alone.",
-    image: "/images/day-sniffari/home-map.png",
+    image: "/images/day-sniffari/midday-home-map.png",
     alt: "A home floor plan showing a new midday scent trail",
     type: "hunt",
   },
