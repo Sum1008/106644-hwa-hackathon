@@ -42,7 +42,7 @@ const groups = [
       {
         question: "What’s included in a kit?",
         answer:
-          "The Starter Kit has one hub, three scent pods, three wall plates, and three food scent vials. The Explore Kit has one hub, six pods, six wall plates, three food scents, and a Detective scent pack.",
+          "The Starter Kit has one hub, three scent pods, three wall plates, and three food scent vials. The Explorer Kit has one hub, six pods, six wall plates, three food scents, and a Detective scent pack.",
       },
       {
         question: "What are the three levels?",
@@ -52,7 +52,7 @@ const groups = [
       {
         question: "Which kit should I buy?",
         answer:
-          "Start with the Starter Kit if you’re trying it for the first time or live in a smaller flat. Go for the Explore Kit if you want six rooms of trail and the Detective level from day one.",
+          "Start with the Starter Kit if you’re trying it for the first time or live in a smaller flat. Go for the Explorer Kit if you want six rooms of trail and the Detective level from day one.",
       },
       {
         question: "How do scent refills work?",
@@ -102,7 +102,7 @@ export default function FaqPage() {
         intro="If your question isn’t here, send it to us through the contact page — we answer every one, usually within a day or two."
       />
 
-      <section className="py-14 sm:py-20">
+      <section className="py-12 sm:py-20">
         <Container>
           <div className="space-y-12">
             {groups.map((group) => (
@@ -114,7 +114,7 @@ export default function FaqPage() {
                   {group.items.map((item) => (
                     <details
                       key={item.question}
-                      className="group rounded-3xl border border-sand-200 bg-cream-50 px-6 py-5 shadow-soft"
+                      className="group rounded-3xl border border-sand-200 bg-cream-50 px-5 py-4 shadow-soft sm:px-6 sm:py-5"
                     >
                       <summary className="flex cursor-pointer list-none items-center justify-between gap-4 text-sm font-semibold text-charcoal-900 marker:hidden">
                         {item.question}

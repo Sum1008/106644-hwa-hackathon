@@ -39,8 +39,8 @@ export function ProductCard({ product }: { product: Product }) {
       </Link>
 
       <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="flex items-start justify-between gap-4">
-          <div>
+        <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+          <div className="min-w-0">
             <h3 className="font-display text-2xl font-medium leading-tight tracking-[-0.025em] text-charcoal-900">
               <Link
                 href={`/products/${product.slug}`}
@@ -51,7 +51,7 @@ export function ProductCard({ product }: { product: Product }) {
             </h3>
             <p className="mt-1.5 text-sm text-charcoal-600">{product.tagline}</p>
           </div>
-          <p className="whitespace-nowrap font-display text-lg font-medium text-teal-800">
+          <p className="whitespace-nowrap font-display text-lg font-medium text-teal-800 sm:pt-1">
             {formatINR(product.price)}
           </p>
         </div>
@@ -60,7 +60,7 @@ export function ProductCard({ product }: { product: Product }) {
           {product.shortDescription}
         </p>
 
-        <div className="mt-auto flex items-center justify-between gap-3 border-t border-sand-200/70 pt-5">
+        <div className="mt-auto flex flex-col items-stretch gap-3 border-t border-sand-200/70 pt-5 sm:flex-row sm:items-center sm:justify-between">
           <Link
             href={`/products/${product.slug}`}
             className="text-xs font-bold uppercase tracking-[0.13em] text-teal-700 transition-colors hover:text-teal-800"

@@ -47,7 +47,7 @@ export default async function OrderPage({
                 Order placed
               </p>
             ) : null}
-            <h1 className="mt-4 font-display text-4xl font-bold leading-tight sm:text-5xl">
+            <h1 className="mt-4 break-words font-display text-[2.25rem] font-bold leading-tight sm:text-5xl">
               {placedNow
                 ? `Thank you, ${order.customer.firstName}.`
                 : `Order ${order.id}`}
@@ -73,8 +73,10 @@ export default async function OrderPage({
                 Estimated delivery {formatDate(order.estimatedDelivery)}
               </span>
             </div>
-            <div className="mt-6 flex flex-wrap gap-3 print:hidden">
-              <ButtonLink href="/shop">Continue shopping</ButtonLink>
+            <div className="mt-6 flex flex-col gap-3 print:hidden sm:flex-row sm:flex-wrap">
+              <ButtonLink href="/shop" className="w-full sm:w-auto">
+                Continue shopping
+              </ButtonLink>
               <PrintButton />
             </div>
           </div>
@@ -84,15 +86,15 @@ export default async function OrderPage({
       <section className="py-12 sm:py-16">
         <Container className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start">
           <div className="space-y-6">
-            <div className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft sm:p-8">
+            <div className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-8">
               <h2 className="font-display text-xl font-bold">Items</h2>
               <ul className="mt-5 space-y-4">
                 {order.items.map((item) => (
                   <li
                     key={`${item.productId}-${item.variantId ?? ""}`}
-                    className="flex gap-4"
+                    className="flex min-w-0 gap-3 sm:gap-4"
                   >
-                    <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-2xl bg-cream-100">
+                    <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-2xl bg-cream-100 sm:h-16 sm:w-16">
                       <Image
                         src={item.image}
                         alt={item.name}
@@ -101,7 +103,7 @@ export default async function OrderPage({
                         className="object-cover"
                       />
                     </div>
-                    <div className="flex-1">
+                    <div className="min-w-0 flex-1">
                       <p className="text-sm font-semibold">{item.name}</p>
                       {item.variantLabel ? (
                         <p className="text-xs text-charcoal-400">
@@ -112,7 +114,7 @@ export default async function OrderPage({
                         Qty {item.quantity} · {formatINR(item.unitPrice)} each
                       </p>
                     </div>
-                    <p className="text-sm font-semibold">
+                    <p className="shrink-0 text-sm font-semibold">
                       {formatINR(item.lineTotal)}
                     </p>
                   </li>

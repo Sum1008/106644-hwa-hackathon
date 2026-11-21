@@ -51,9 +51,9 @@ export function ToastProvider({ children }: { children: ReactNode }) {
         className="pointer-events-none fixed inset-x-0 bottom-5 z-[60] flex justify-center px-4 sm:bottom-7 sm:justify-end sm:px-6"
       >
         {current ? (
-          <div className="toast-in pointer-events-auto flex w-full max-w-sm items-center gap-3 rounded-2xl border border-sand-200 bg-cream-50 p-3 shadow-[0_24px_70px_-18px_rgba(36,36,36,0.4)] sm:w-auto sm:min-w-[360px]">
+          <div className="toast-in pointer-events-auto flex w-full max-w-sm items-center gap-2 rounded-2xl border border-sand-200 bg-cream-50 p-3 shadow-[0_24px_70px_-18px_rgba(36,36,36,0.4)] sm:gap-3 sm:w-auto sm:min-w-[360px]">
             {current.image ? (
-              <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-cream-100">
+              <div className="relative hidden h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-cream-100 min-[380px]:block sm:h-16 sm:w-16">
                 <Image
                   src={current.image}
                   alt=""
@@ -78,7 +78,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
               <Link
                 href={current.href}
                 onClick={() => setCurrent(null)}
-                className="shrink-0 rounded-full bg-charcoal-900 px-4 py-2 text-xs font-bold text-cream-50 transition-colors hover:bg-teal-800"
+                className="shrink-0 rounded-full bg-charcoal-900 px-3 py-2 text-xs font-bold text-cream-50 transition-colors hover:bg-teal-800 sm:px-4"
               >
                 {current.label}
               </Link>

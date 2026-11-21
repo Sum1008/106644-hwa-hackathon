@@ -63,7 +63,7 @@ export const products: Product[] = [
   {
     id: "explore-kit",
     slug: "explore-kit",
-    name: "Explore Kit",
+    name: "Explorer Kit",
     tagline: "A longer trail for the whole home.",
     category: "kit",
     price: 13999,
@@ -71,7 +71,7 @@ export const products: Product[] = [
     shortDescription:
       "1 hub + 6 pods + 3 food scents + 1 detective pack.",
     description: [
-      "The Explore Kit gives your dog six scent stations and the decoy scents for Detective level. More rooms mean more routes, more pauses, and more reasons to keep exploring.",
+      "The Explorer Kit gives your dog six scent stations and the decoy scents for Detective level. More rooms mean more routes, more pauses, and more reasons to keep exploring.",
       "Start with a guided trail, then move the pods around to keep the game fresh. The detective pack introduces decoy scents for the hardest level.",
     ],
     highlights: [
@@ -100,7 +100,7 @@ export const products: Product[] = [
     images: [
       {
         src: "/images/in-the-box.webp",
-        alt: "Explore Kit with the hub, six scent pods, scent vials, and accessories",
+        alt: "Explorer Kit with the hub, six scent pods, scent vials, and accessories",
       },
       {
         src: "/images/hero.png",

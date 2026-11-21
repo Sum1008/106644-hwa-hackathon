@@ -43,11 +43,11 @@ export function CartView() {
           return (
             <li
               key={key}
-              className="flex gap-4 rounded-3xl border border-sand-200 bg-cream-50 p-4 shadow-soft sm:p-5"
+              className="flex gap-3 rounded-3xl border border-sand-200 bg-cream-50 p-3 shadow-soft sm:gap-4 sm:p-5"
             >
               <Link
                 href={`/products/${line.product.slug}`}
-                className="relative h-24 w-24 shrink-0 overflow-hidden rounded-2xl bg-cream-100 sm:h-28 sm:w-28"
+                className="relative h-20 w-20 shrink-0 overflow-hidden rounded-2xl bg-cream-100 sm:h-28 sm:w-28"
               >
                 <Image
                   src={line.image}
@@ -59,8 +59,8 @@ export function CartView() {
               </Link>
 
               <div className="flex flex-1 flex-col">
-                <div className="flex items-start justify-between gap-3">
-                  <div>
+                <div className="flex flex-col items-start gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-3">
+                  <div className="min-w-0">
                     <h3 className="font-display text-lg font-bold">
                       <Link
                         href={`/products/${line.product.slug}`}
@@ -78,7 +78,7 @@ export function CartView() {
                       {formatINR(line.unitPrice)} each
                     </p>
                   </div>
-                  <p className="whitespace-nowrap font-display text-lg font-bold text-teal-800">
+                  <p className="whitespace-nowrap font-display text-lg font-bold text-teal-800 sm:pt-0.5">
                     {formatINR(line.lineTotal)}
                   </p>
                 </div>
@@ -135,7 +135,7 @@ export function CartView() {
         })}
       </ul>
 
-      <aside className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft lg:sticky lg:top-24">
+      <aside className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-6 lg:sticky lg:top-24">
         <h2 className="font-display text-xl font-bold">Order summary</h2>
         <dl className="mt-5 space-y-3 text-sm">
           <div className="flex justify-between">

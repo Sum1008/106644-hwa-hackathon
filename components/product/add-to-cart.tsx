@@ -86,8 +86,8 @@ export function AddToCart({ product }: { product: Product }) {
         </fieldset>
       ) : null}
 
-      <div className="flex flex-wrap items-center gap-3">
-        <div className="inline-flex h-12 items-center rounded-full border border-charcoal-900/15 bg-cream-50">
+      <div className="grid grid-cols-2 items-stretch gap-3 sm:flex sm:flex-wrap sm:items-center">
+        <div className="col-span-2 inline-flex h-12 w-full items-center justify-between rounded-full border border-charcoal-900/15 bg-cream-50 sm:w-auto sm:justify-start">
           <button
             type="button"
             onClick={() => setQuantity((value) => Math.max(1, value - 1))}
@@ -117,7 +117,7 @@ export function AddToCart({ product }: { product: Product }) {
         <Button
           onClick={() => handleAdd(false)}
           size="lg"
-          className="flex-1 sm:flex-none"
+          className="w-full min-w-0 px-3 sm:flex-none sm:px-7"
         >
           Add to cart
         </Button>
@@ -125,7 +125,7 @@ export function AddToCart({ product }: { product: Product }) {
           onClick={() => handleAdd(true)}
           size="lg"
           variant="coral"
-          className="flex-1 sm:flex-none"
+          className="w-full min-w-0 px-3 sm:flex-none sm:px-7"
         >
           Buy now
         </Button>

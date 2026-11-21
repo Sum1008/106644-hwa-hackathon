@@ -82,7 +82,7 @@ export default function HomePage() {
         <div className="pointer-events-none absolute -left-40 -top-48 h-[38rem] w-[38rem] rounded-full bg-teal-100/55 blur-3xl" />
         <div className="pointer-events-none absolute -right-32 top-40 h-[30rem] w-[30rem] rounded-full bg-coral-100/60 blur-3xl" />
 
-        <Container className="relative grid gap-14 py-14 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-20 lg:py-24">
+        <Container className="relative grid gap-14 py-16 sm:py-20 lg:grid-cols-[1.02fr_0.98fr] lg:items-center lg:gap-20 lg:py-24">
           <Reveal>
             <span className="inline-flex items-center gap-2.5 rounded-full border border-teal-700/15 bg-cream-50/75 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-teal-800 shadow-sm backdrop-blur">
               <span className="h-1.5 w-1.5 rounded-full bg-coral-500 shadow-[0_0_0_4px_rgba(239,128,100,0.14)]" />
@@ -92,7 +92,7 @@ export default function HomePage() {
             <p className="mt-8 text-xs font-bold uppercase tracking-[0.24em] text-charcoal-400">
               A treasure hunt, made for home
             </p>
-            <h1 className="mt-4 max-w-2xl text-5xl font-medium leading-[0.98] tracking-[-0.05em] text-charcoal-900 sm:text-6xl lg:text-[5.2rem]">
+            <h1 className="mt-4 max-w-2xl text-[2.75rem] font-medium leading-[0.98] tracking-[-0.05em] text-charcoal-900 sm:text-6xl lg:text-[5.2rem]">
               Turn your home into a{" "}
               <span className="italic text-teal-700">treasure hunt.</span>
             </h1>
@@ -104,16 +104,21 @@ export default function HomePage() {
             </p>
 
             <div className="mt-9 flex flex-wrap gap-3">
-              <ButtonLink href="/shop" size="lg">
+              <ButtonLink href="/shop" size="lg" className="w-full sm:w-auto">
                 Shop kits
                 <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
               </ButtonLink>
-              <ButtonLink href="#how-it-works" variant="secondary" size="lg">
+              <ButtonLink
+                href="#how-it-works"
+                variant="secondary"
+                size="lg"
+                className="w-full sm:w-auto"
+              >
                 See how it works
               </ButtonLink>
             </div>
 
-            <dl className="mt-12 grid max-w-xl grid-cols-3 border-y border-sand-200/80 py-5">
+            <dl className="mt-12 grid max-w-xl grid-cols-3 border-y border-sand-200/80 py-5 text-left">
               <div className="border-r border-sand-200/80 pr-4">
                 <dt className="text-[10px] font-bold uppercase tracking-[0.16em] text-charcoal-400">
                   Setup
@@ -184,7 +189,7 @@ export default function HomePage() {
       </section>
 
       <section className="border-b border-sand-200/70">
-        <Container className="grid gap-12 py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:py-32">
+        <Container className="grid gap-12 py-16 sm:py-20 lg:grid-cols-2 lg:items-center lg:gap-20 lg:py-32">
           <Reveal className="relative">
             <div className="absolute -left-5 -top-5 h-28 w-28 rounded-tl-3xl border-l border-t border-teal-700/30" />
             <div className="relative aspect-[4/3] overflow-hidden rounded-[2rem] bg-cream-100 shadow-card">
@@ -236,7 +241,7 @@ export default function HomePage() {
         id="how-it-works"
         className="scroll-mt-24 border-b border-sand-200/70 bg-cream-100/50"
       >
-        <Container className="py-20 lg:py-32">
+        <Container className="py-16 sm:py-20 lg:py-32">
           <Reveal className="max-w-3xl">
             <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-teal-700">
               How Sniffari works
@@ -311,8 +316,8 @@ export default function HomePage() {
             </ButtonLink>
           </Reveal>
 
-          <Reveal delay={120} className="grid grid-cols-2 gap-4">
-            <div className="relative mt-10 aspect-[3/4] overflow-hidden rounded-[1.75rem] bg-cream-100 shadow-card">
+          <Reveal delay={120} className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-cream-100 shadow-card sm:mt-10 sm:aspect-[3/4]">
               <Image
                 src="/images/nose-touch.webp"
                 alt="A dog gently pressing the soft nose pad on a Sniffari pod"
@@ -321,7 +326,7 @@ export default function HomePage() {
                 className="object-cover"
               />
             </div>
-            <div className="relative aspect-[3/4] overflow-hidden rounded-[1.75rem] bg-cream-100 shadow-card">
+            <div className="relative aspect-[4/3] overflow-hidden rounded-[1.75rem] bg-cream-100 shadow-card sm:aspect-[3/4]">
               <Image
                 src="/images/dog-hunt.webp"
                 alt="A dog following a scent to a wall-mounted Sniffari pod"
@@ -335,7 +340,7 @@ export default function HomePage() {
       </section>
 
       <section id="levels" className="scroll-mt-24 bg-charcoal-900 text-cream-50">
-        <Container className="py-20 lg:py-32">
+        <Container className="py-16 sm:py-20 lg:py-32">
           <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-teal-100">
@@ -386,7 +391,7 @@ export default function HomePage() {
       </section>
 
       <section id="products" className="scroll-mt-24">
-        <Container className="py-20 lg:py-32">
+        <Container className="py-16 sm:py-20 lg:py-32">
           <Reveal className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
             <div className="max-w-2xl">
               <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-teal-700">

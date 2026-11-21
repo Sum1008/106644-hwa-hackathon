@@ -112,6 +112,11 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  img {
+    max-width: 100%;
   }
 
   h1,

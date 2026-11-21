@@ -14,14 +14,14 @@ export const metadata: Metadata = {
 export default function ShopPage() {
   return (
     <>
-      <section className="relative overflow-hidden border-b border-sand-200 bg-cream-100/60 py-16 sm:py-24">
+      <section className="relative overflow-hidden border-b border-sand-200 bg-cream-100/60 py-14 sm:py-24">
         <div className="pointer-events-none absolute -right-24 -top-28 h-80 w-80 rounded-full bg-coral-100/55 blur-3xl" />
         <Container className="relative">
           <Reveal>
             <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-teal-700">
               The Sniffari range
             </p>
-            <h1 className="mt-4 max-w-3xl font-display text-5xl font-medium leading-[0.98] tracking-[-0.045em] sm:text-6xl">
+            <h1 className="mt-4 max-w-3xl font-display text-[2.75rem] font-medium leading-[0.98] tracking-[-0.045em] sm:text-6xl">
               A scent trail for every home.
             </h1>
             <p className="mt-6 max-w-2xl text-base leading-8 text-charcoal-600">
@@ -44,7 +44,7 @@ export default function ShopPage() {
         </Container>
       </section>
 
-      <section className="py-16 sm:py-24">
+      <section className="py-14 sm:py-24">
         <Container>
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {products.map((product, index) => (

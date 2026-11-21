@@ -16,7 +16,7 @@ const columns = [
     title: "The range",
     links: [
       { href: "/products/starter-kit", label: "Starter Kit" },
-      { href: "/products/explore-kit", label: "Explore Kit" },
+      { href: "/products/explore-kit", label: "Explorer Kit" },
       { href: "/products/extra-pod", label: "Extra Pod" },
       { href: "/products/scent-refill-pack", label: "Scent Refills" },
     ],
@@ -43,9 +43,9 @@ const columns = [
 export function SiteFooter() {
   return (
     <footer className="border-t border-sand-200 bg-charcoal-900 text-cream-50">
-      <Container className="py-16">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
-          <div>
+      <Container className="py-14 sm:py-16">
+        <div className="grid gap-10 sm:grid-cols-2 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
+          <div className="sm:col-span-2 md:col-span-1">
             <Logo />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-cream-50/65">
               {site.description}

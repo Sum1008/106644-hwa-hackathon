@@ -70,7 +70,7 @@ export function TrackForm({
     <div className="space-y-8">
       <form
         onSubmit={lookup}
-        className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft sm:p-8"
+        className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-8"
       >
         <div className="grid gap-4 sm:grid-cols-[1fr_1fr_auto] sm:items-end">
           <div>
@@ -100,7 +100,12 @@ export function TrackForm({
               required
             />
           </div>
-          <Button type="submit" size="lg" disabled={loading}>
+          <Button
+            type="submit"
+            size="lg"
+            disabled={loading}
+            className="w-full sm:w-auto"
+          >
             {loading ? (
               <>
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />

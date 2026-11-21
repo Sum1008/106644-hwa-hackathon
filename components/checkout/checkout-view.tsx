@@ -164,7 +164,7 @@ export function CheckoutView() {
       className="grid gap-8 lg:grid-cols-[1.4fr_1fr] lg:items-start"
     >
       <div className="space-y-6">
-        <section className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft sm:p-8">
+        <section className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-8">
           <h2 className="font-display text-xl font-bold">Contact</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-2">
             <div>
@@ -227,7 +227,7 @@ export function CheckoutView() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft sm:p-8">
+        <section className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-8">
           <h2 className="font-display text-xl font-bold">Delivery address</h2>
           <div className="mt-5 space-y-4">
             <div>
@@ -306,9 +306,9 @@ export function CheckoutView() {
           </div>
         </section>
 
-        <section className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft sm:p-8">
+        <section className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-8">
           <h2 className="font-display text-xl font-bold">Payment</h2>
-          <div className="mt-4 flex items-start gap-3 rounded-2xl border border-teal-700 bg-teal-50 p-4">
+          <div className="mt-4 flex flex-wrap items-start gap-3 rounded-2xl border border-teal-700 bg-teal-50 p-4">
             <Truck
               className="mt-0.5 h-5 w-5 shrink-0 text-teal-700"
               aria-hidden="true"
@@ -319,7 +319,7 @@ export function CheckoutView() {
                 Pay cash or UPI when your order arrives. No card needed.
               </p>
             </div>
-            <span className="ml-auto shrink-0 rounded-full bg-teal-700 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-cream-50">
+            <span className="ml-auto shrink-0 rounded-full bg-teal-700 px-2 py-1 text-[10px] font-bold uppercase tracking-wide text-cream-50 max-sm:ml-0">
               Selected
             </span>
           </div>
@@ -340,7 +340,7 @@ export function CheckoutView() {
         </section>
       </div>
 
-      <aside className="rounded-3xl border border-sand-200 bg-cream-50 p-6 shadow-soft lg:sticky lg:top-24">
+      <aside className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:p-6 lg:sticky lg:top-24">
         <div className="flex items-center justify-between gap-3">
           <h2 className="font-display text-xl font-bold">Your order</h2>
           <Link
@@ -356,9 +356,9 @@ export function CheckoutView() {
             {resolved.map((line) => (
               <li
                 key={`${line.product.id}-${line.variantId ?? ""}`}
-                className="flex gap-3"
+                className="flex min-w-0 gap-3"
               >
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-cream-100">
+                <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-xl bg-cream-100 sm:h-14 sm:w-14">
                   <Image
                     src={line.image}
                     alt={line.product.name}
@@ -367,7 +367,7 @@ export function CheckoutView() {
                     className="object-cover"
                   />
                 </div>
-                <div className="flex-1">
+                <div className="min-w-0 flex-1">
                   <p className="text-sm font-semibold">{line.product.name}</p>
                   {line.variantLabel ? (
                     <p className="text-xs text-charcoal-400">
@@ -378,7 +378,7 @@ export function CheckoutView() {
                     Qty {line.quantity}
                   </p>
                 </div>
-                <p className="text-sm font-semibold">
+                <p className="shrink-0 text-sm font-semibold">
                   {formatINR(line.lineTotal)}
                 </p>
               </li>

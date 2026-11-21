@@ -9,13 +9,13 @@ export const metadata: Metadata = {
 
 export default function CheckoutPage() {
   return (
-    <section className="py-12 sm:py-16">
+    <section className="py-9 sm:py-16">
       <Container>
         <div className="max-w-2xl">
           <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-teal-700">
             Almost there
           </p>
-          <h1 className="mt-3 font-display text-4xl font-bold leading-tight sm:text-5xl">
+          <h1 className="mt-3 font-display text-4xl font-medium leading-tight tracking-[-0.03em] sm:text-5xl">
             Checkout.
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
@@ -23,7 +23,7 @@ export default function CheckoutPage() {
           </p>
         </div>
 
-        <div className="mt-10">
+        <div className="mt-7 sm:mt-10">
           <CheckoutView />
         </div>
       </Container>

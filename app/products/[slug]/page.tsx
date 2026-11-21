@@ -61,7 +61,7 @@ export default async function ProductPage({
 
   return (
     <>
-      <Container className="pt-8">
+      <Container className="pt-6 sm:pt-8">
         <nav aria-label="Breadcrumb">
           <ol className="flex flex-wrap items-center gap-2 text-xs text-charcoal-400">
             <li>
@@ -83,10 +83,10 @@ export default async function ProductPage({
         </nav>
       </Container>
 
-      <section className="py-8 sm:py-12">
+      <section className="py-7 sm:py-12">
         <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
           <Reveal>
-            <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-sand-200 bg-cream-100 shadow-card">
+            <div className="relative aspect-square overflow-hidden rounded-[1.5rem] border border-sand-200 bg-cream-100 shadow-card sm:rounded-[2rem]">
               <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.8),transparent_62%)]" />
               <Image
                 src={product.images[0].src}
@@ -110,11 +110,11 @@ export default async function ProductPage({
             </div>
 
             {product.images.length > 1 ? (
-              <div className="mt-4 grid grid-cols-3 gap-3">
+              <div className="mt-3 grid grid-cols-3 gap-2 sm:mt-4 sm:gap-3">
                 {product.images.slice(1, 4).map((image) => (
                   <div
                     key={image.src}
-                    className="group relative aspect-square overflow-hidden rounded-2xl border border-sand-200 bg-cream-100 transition-colors hover:border-teal-700/30"
+                    className="group relative aspect-square overflow-hidden rounded-xl border border-sand-200 bg-cream-100 transition-colors hover:border-teal-700/30 sm:rounded-2xl"
                   >
                     <Image
                       src={image.src}
@@ -139,14 +139,14 @@ export default async function ProductPage({
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-teal-700">
               {categoryLabels[product.category]}
             </p>
-            <h1 className="mt-3 font-display text-5xl font-medium leading-[0.98] tracking-[-0.045em] sm:text-6xl">
+            <h1 className="mt-3 font-display text-[2.75rem] font-medium leading-[0.98] tracking-[-0.045em] sm:text-6xl">
               {product.name}
             </h1>
             <p className="mt-2 text-base text-charcoal-600">
               {product.tagline}
             </p>
 
-            <div className="mt-6 flex items-baseline gap-3 border-y border-sand-200 py-4">
+            <div className="mt-6 flex flex-wrap items-baseline gap-x-3 gap-y-1 border-y border-sand-200 py-4">
               <p className="font-display text-3xl font-medium text-teal-800">
                 {formatINR(product.price)}
               </p>
@@ -177,7 +177,7 @@ export default async function ProductPage({
               <AddToCart product={product} />
             </div>
 
-            <ul className="mt-8 grid gap-3 border-t border-sand-200 pt-6 sm:grid-cols-3">
+            <ul className="mt-8 grid gap-3 border-t border-sand-200 pt-6 sm:grid-cols-3 max-sm:grid-cols-1">
               {trust.map((item) => (
                 <li
                   key={item.label}
@@ -196,14 +196,14 @@ export default async function ProductPage({
       </section>
 
       <section className="border-y border-sand-200 bg-cream-100/50">
-        <Container className="grid gap-10 py-16 lg:grid-cols-2 lg:py-24">
+        <Container className="grid gap-10 py-14 sm:py-16 lg:grid-cols-2 lg:py-24">
           <Reveal>
             <h2 className="font-display text-2xl font-bold">In the box</h2>
             <ul className="mt-5 space-y-3">
               {product.inTheBox.map((item) => (
                 <li
                   key={item.label}
-                  className="flex items-center justify-between gap-4 border-b border-sand-200 pb-3 text-sm text-charcoal-700"
+                  className="flex flex-col gap-1 border-b border-sand-200 pb-3 text-sm text-charcoal-700 min-[380px]:flex-row min-[380px]:items-center min-[380px]:justify-between min-[380px]:gap-4"
                 >
                   <span>{item.label}</span>
                   <span className="font-semibold text-charcoal-900">
@@ -236,7 +236,7 @@ export default async function ProductPage({
       </section>
 
       {related.length > 0 ? (
-        <section className="py-16 sm:py-24">
+        <section className="py-14 sm:py-24">
           <Container>
             <Reveal>
               <h2 className="font-display text-4xl font-medium tracking-[-0.03em]">

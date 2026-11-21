@@ -47,18 +47,18 @@ export default function ContactPage() {
         intro="Questions about a kit, a scent pack, or an order that’s on its way? Send us a note and we’ll sort it out. For a live order status, the tracking page is the fastest route."
       />
 
-      <section className="py-14 sm:py-20">
+      <section className="py-12 sm:py-20">
         <Container className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:items-start">
           <div className="space-y-4">
             {details.map((detail) => (
               <div
                 key={detail.label}
-                className="flex gap-4 rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft"
+                className="flex gap-3 rounded-3xl border border-sand-200 bg-cream-50 p-4 shadow-soft sm:gap-4 sm:p-5"
               >
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-teal-50 text-teal-700">
                   <detail.icon className="h-4 w-4" aria-hidden="true" />
                 </span>
-                <div>
+                <div className="min-w-0">
                   <p className="text-xs font-semibold uppercase tracking-wide text-charcoal-400">
                     {detail.label}
                   </p>

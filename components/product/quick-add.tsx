@@ -16,6 +16,7 @@ export function QuickAdd({ product }: { product: Product }) {
         href={`/products/${product.slug}`}
         size="sm"
         variant="secondary"
+        className="w-full sm:w-auto"
       >
         Choose scent
       </ButtonLink>
@@ -34,6 +35,7 @@ export function QuickAdd({ product }: { product: Product }) {
           label: "View cart",
         });
       }}
+      className="w-full sm:w-auto"
     >
       <Plus className="h-4 w-4" aria-hidden="true" />
       Add

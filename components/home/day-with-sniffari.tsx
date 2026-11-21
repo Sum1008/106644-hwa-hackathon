@@ -118,7 +118,7 @@ export function DayWithSniffari() {
       className="relative scroll-mt-20 overflow-hidden transition-colors duration-700"
       style={{ backgroundColor: colors.bottom }}
     >
-      <div className="relative flex items-center overflow-hidden py-20 sm:py-24">
+      <div className="relative flex items-center overflow-hidden py-16 sm:py-24">
         <div
           className="pointer-events-none absolute inset-0 transition-colors duration-700"
           style={{
@@ -163,7 +163,7 @@ export function DayWithSniffari() {
             >
               A day with Sniffari
             </p>
-            <h2 className="mt-4 text-4xl font-medium leading-[1.02] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
+            <h2 className="mt-4 text-[2.25rem] font-medium leading-[1.02] tracking-[-0.04em] sm:text-5xl lg:text-6xl">
               Play, pause, play — a balanced day.
             </h2>
             <p
@@ -176,85 +176,144 @@ export function DayWithSniffari() {
             </p>
           </div>
 
-          <div className="mt-10 sm:mt-12">
-            <div className="overflow-x-auto pb-3 [scrollbar-width:thin]">
-              <div className="relative mx-auto min-w-[760px] px-1">
-                <div
-                  className={`absolute left-[4%] right-[4%] top-[31px] h-px transition-colors duration-700 ${
-                    isDark ? "bg-cream-50/25" : "bg-charcoal-900/15"
-                  }`}
-                />
-                <div className="absolute left-[4%] top-[29px] h-[5px] w-[8%] rounded-full bg-teal-500" />
-                <div className="absolute left-[34%] top-[29px] h-[5px] w-[30%] rounded-full bg-teal-500" />
-                <div className="absolute left-[71%] top-[29px] h-[5px] w-[12%] rounded-full bg-teal-500" />
-                <div className="absolute left-[13%] top-[27px] h-2 w-[19%] rounded-full bg-charcoal-900/10" />
-                <div className="absolute left-[66%] top-[27px] h-2 w-[3%] rounded-full bg-charcoal-900/10" />
+          <div className="mt-8 sm:mt-12">
+            <div className="grid grid-cols-5 gap-1 sm:hidden">
+              {moments.map((moment) => {
+                const selected = moment.id === activeId;
+                const isHunt = moment.type === "hunt";
+                return (
+                  <button
+                    key={moment.id}
+                    type="button"
+                    aria-label={`${moment.time}, ${moment.label}`}
+                    aria-pressed={selected}
+                    onClick={() => setActiveId(moment.id)}
+                    className="group flex min-w-0 flex-col items-center px-0.5 text-center"
+                  >
+                    <span
+                      className={`relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 transition-all duration-500 ${
+                        isHunt
+                          ? "border-teal-600 bg-teal-500 shadow-[0_0_0_4px_rgba(22,155,155,0.13)]"
+                          : `h-2 w-8 border-0 ${
+                              isDark
+                                ? "bg-cream-50/25"
+                                : "bg-charcoal-900/15"
+                            }`
+                      } ${
+                        selected
+                          ? "scale-125 ring-2 ring-coral-500 ring-offset-2 ring-offset-transparent"
+                          : "group-hover:scale-110"
+                      }`}
+                    />
+                    <span
+                      className={`mt-3 font-display text-xs font-medium leading-tight transition-colors duration-300 sm:text-lg ${
+                        isDark
+                          ? selected
+                            ? "text-cream-50"
+                            : "text-cream-50/55"
+                          : selected
+                            ? "text-charcoal-900"
+                            : "text-charcoal-400"
+                      }`}
+                    >
+                      {moment.time.replace(" AM", "")}
+                      <br />
+                      {moment.time.includes("AM") ? "AM" : "PM"}
+                    </span>
+                    <span
+                      className={`mt-1 line-clamp-2 text-[8px] font-bold uppercase leading-3 tracking-[0.08em] transition-colors duration-300 ${
+                        isDark
+                          ? selected
+                            ? "text-teal-100"
+                            : "text-cream-50/40"
+                          : selected
+                            ? "text-teal-700"
+                            : "text-charcoal-400"
+                      }`}
+                    >
+                      {moment.label}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
 
-                <div className="relative grid grid-cols-5">
-                  {moments.map((moment) => {
-                    const selected = moment.id === activeId;
-                    const isHunt = moment.type === "hunt";
-                    return (
-                      <button
-                        key={moment.id}
-                        type="button"
-                        aria-pressed={selected}
-                        onClick={() => setActiveId(moment.id)}
-                        onFocus={() => setActiveId(moment.id)}
-                        className="group flex flex-col items-center px-2 text-center"
+            <div className="relative mx-auto hidden min-w-[700px] sm:block">
+              <div
+                className={`absolute left-[4%] right-[4%] top-[31px] h-px transition-colors duration-700 ${
+                  isDark ? "bg-cream-50/25" : "bg-charcoal-900/15"
+                }`}
+              />
+              <div className="absolute left-[4%] top-[29px] h-[5px] w-[8%] rounded-full bg-teal-500" />
+              <div className="absolute left-[34%] top-[29px] h-[5px] w-[30%] rounded-full bg-teal-500" />
+              <div className="absolute left-[71%] top-[29px] h-[5px] w-[12%] rounded-full bg-teal-500" />
+              <div className="absolute left-[13%] top-[27px] h-2 w-[19%] rounded-full bg-charcoal-900/10" />
+              <div className="absolute left-[66%] top-[27px] h-2 w-[3%] rounded-full bg-charcoal-900/10" />
+
+              <div className="relative grid grid-cols-5">
+                {moments.map((moment) => {
+                  const selected = moment.id === activeId;
+                  const isHunt = moment.type === "hunt";
+                  return (
+                    <button
+                      key={moment.id}
+                      type="button"
+                      aria-pressed={selected}
+                      onClick={() => setActiveId(moment.id)}
+                      onFocus={() => setActiveId(moment.id)}
+                      className="group flex flex-col items-center px-2 text-center"
+                    >
+                      <span
+                        className={`relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 transition-all duration-500 ${
+                          isHunt
+                            ? "border-teal-600 bg-teal-500 shadow-[0_0_0_5px_rgba(22,155,155,0.13)]"
+                            : `h-2 w-12 border-0 ${
+                                isDark
+                                  ? "bg-cream-50/25"
+                                  : "bg-charcoal-900/15"
+                              }`
+                        } ${
+                          selected
+                            ? "scale-125 ring-2 ring-coral-500 ring-offset-4 ring-offset-transparent"
+                            : "group-hover:scale-110"
+                        }`}
+                      />
+                      <span
+                        className={`mt-5 font-display text-lg font-medium transition-colors duration-300 ${
+                          isDark
+                            ? selected
+                              ? "text-cream-50"
+                              : "text-cream-50/55"
+                            : selected
+                              ? "text-charcoal-900"
+                              : "text-charcoal-400"
+                        }`}
                       >
-                        <span
-                          className={`relative z-10 flex h-4 w-4 items-center justify-center rounded-full border-2 transition-all duration-500 ${
-                            isHunt
-                              ? "border-teal-600 bg-teal-500 shadow-[0_0_0_5px_rgba(22,155,155,0.13)]"
-                              : `h-2 w-12 border-0 ${
-                                  isDark
-                                    ? "bg-cream-50/25"
-                                    : "bg-charcoal-900/15"
-                                }`
-                          } ${
-                            selected
-                              ? "scale-125 ring-2 ring-coral-500 ring-offset-4 ring-offset-transparent"
-                              : "group-hover:scale-110"
-                          }`}
-                        />
-                        <span
-                          className={`mt-5 font-display text-lg font-medium transition-colors duration-300 ${
-                            isDark
-                              ? selected
-                                ? "text-cream-50"
-                                : "text-cream-50/55"
-                              : selected
-                                ? "text-charcoal-900"
-                                : "text-charcoal-400"
-                          }`}
-                        >
-                          {moment.time}
-                        </span>
-                        <span
-                          className={`mt-1 text-[9px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 ${
-                            isDark
-                              ? selected
-                                ? "text-teal-100"
-                                : "text-cream-50/40"
-                              : selected
-                                ? "text-teal-700"
-                                : "text-charcoal-400"
-                          }`}
-                        >
-                          {moment.label}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                        {moment.time}
+                      </span>
+                      <span
+                        className={`mt-1 text-[9px] font-bold uppercase tracking-[0.16em] transition-colors duration-300 ${
+                          isDark
+                            ? selected
+                              ? "text-teal-100"
+                              : "text-cream-50/40"
+                            : selected
+                              ? "text-teal-700"
+                              : "text-charcoal-400"
+                        }`}
+                      >
+                        {moment.label}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
             </div>
 
             <div className="mt-5 grid gap-5 lg:grid-cols-[1.08fr_0.92fr] lg:items-stretch">
               <div
                 key={activeMoment.id}
-                className="day-moment-card relative min-h-[280px] overflow-hidden rounded-[2rem] border border-white/25 bg-cream-50/90 shadow-card backdrop-blur-md sm:min-h-[340px]"
+                className="day-moment-card relative min-h-[240px] overflow-hidden rounded-[1.5rem] border border-white/25 bg-cream-50/90 shadow-card backdrop-blur-md sm:min-h-[340px] sm:rounded-[2rem]"
               >
                 <Image
                   src={activeMoment.image}
@@ -271,10 +330,10 @@ export function DayWithSniffari() {
 
               <div
                 key={`${activeMoment.id}-copy`}
-                className="day-moment-card flex flex-col justify-center rounded-[2rem] border border-white/25 bg-cream-50/90 p-7 shadow-card backdrop-blur-md sm:p-9"
+                className="day-moment-card flex flex-col justify-center rounded-[1.5rem] border border-white/25 bg-cream-50/90 p-6 shadow-card backdrop-blur-md sm:rounded-[2rem] sm:p-9"
               >
-                <div className="flex items-center gap-3">
-                  <span className="font-display text-3xl italic text-teal-700/60">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
+                  <span className="font-display text-2xl italic text-teal-700/60 sm:text-3xl">
                     {activeMoment.time}
                   </span>
                   <span className="h-px w-8 bg-sand-300" />
@@ -282,7 +341,7 @@ export function DayWithSniffari() {
                     {activeMoment.label}
                   </span>
                 </div>
-                <h3 className="mt-5 font-display text-3xl font-medium leading-[1.08] tracking-[-0.03em] sm:text-4xl">
+                <h3 className="mt-4 font-display text-2xl font-medium leading-[1.08] tracking-[-0.03em] sm:mt-5 sm:text-4xl">
                   {activeMoment.title}
                 </h3>
                 <p className="mt-4 text-sm leading-7 text-charcoal-600">
@@ -310,11 +369,11 @@ export function DayWithSniffari() {
                   : "border-charcoal-900/10 bg-cream-50/55 text-charcoal-900"
               }`}
             >
-              <div className="flex flex-wrap items-center justify-center gap-x-7 gap-y-2 sm:justify-start">
-                <span className="font-display text-2xl">9 hours</span>
-                <span className="font-display text-2xl">6 scent hunts</span>
-                <span className="font-display text-2xl">3 rooms</span>
-                <span className="font-display text-2xl italic">1 happy nose</span>
+              <div className="grid w-full grid-cols-2 gap-x-5 gap-y-2 text-center sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-start sm:gap-x-7">
+                <span className="font-display text-xl sm:text-2xl">9 hours</span>
+                <span className="font-display text-xl sm:text-2xl">6 scent hunts</span>
+                <span className="font-display text-xl sm:text-2xl">3 rooms</span>
+                <span className="font-display text-xl italic sm:text-2xl">1 happy nose</span>
               </div>
               <p
                 className={`text-[10px] font-bold uppercase tracking-[0.16em] ${

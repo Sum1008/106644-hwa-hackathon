@@ -122,7 +122,7 @@ export function ContactForm() {
     <form
       onSubmit={handleSubmit(onSubmit)}
       noValidate
-      className="rounded-4xl border border-sand-200 bg-cream-50 p-6 shadow-soft sm:p-10"
+      className="rounded-3xl border border-sand-200 bg-cream-50 p-5 shadow-soft sm:rounded-4xl sm:p-10"
     >
       <h2 className="font-display text-2xl font-bold">Send us a message</h2>
       <p className="mt-2 text-sm text-charcoal-600">
@@ -234,7 +234,7 @@ export function ContactForm() {
       <Button
         type="submit"
         size="lg"
-        className="mt-6"
+        className="mt-6 w-full sm:w-auto"
         disabled={isSubmitting || status === "sending"}
       >
         {isSubmitting || status === "sending" ? (
