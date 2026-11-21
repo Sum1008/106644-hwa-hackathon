@@ -139,7 +139,7 @@ export default function HomePage() {
             <div className="absolute -inset-4 -z-10 rounded-[3rem] border border-sand-200/70" />
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2.25rem] border border-sand-200 bg-cream-100 shadow-card">
               <Image
-                src="/images/hero.webp"
+                src="/images/hero.png"
                 alt="Sniffari hub and three scent pods with treats"
                 fill
                 priority

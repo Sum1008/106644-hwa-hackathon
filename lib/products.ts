@@ -38,7 +38,7 @@ export const products: Product[] = [
     ],
     images: [
       {
-        src: "/images/hero.webp",
+        src: "/images/hero.png",
         alt: "Starter Kit hub with three scent pods and treats",
       },
       {
@@ -103,7 +103,7 @@ export const products: Product[] = [
         alt: "Explore Kit with the hub, six scent pods, scent vials, and accessories",
       },
       {
-        src: "/images/hero.webp",
+        src: "/images/hero.png",
         alt: "Sniffari hub and three pods with treats",
       },
       {
@@ -251,7 +251,7 @@ export const products: Product[] = [
         alt: "A dog following a scent trail to a pod",
       },
       {
-        src: "/images/hero.webp",
+        src: "/images/hero.png",
         alt: "Sniffari hub and pods with treats",
       },
     ],
