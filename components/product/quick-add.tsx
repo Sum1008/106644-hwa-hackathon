@@ -28,7 +28,8 @@ export function QuickAdd({ product }: { product: Product }) {
       onClick={() => {
         addItem(product.id);
         toast({
-          message: `${product.name} added to cart`,
+          message: product.name,
+          image: product.images[0]?.src,
           href: "/cart",
           label: "View cart",
         });

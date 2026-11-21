@@ -21,7 +21,7 @@
   --color-charcoal-600: #5c5c57;
   --color-charcoal-400: #8a8a82;
 
-  --font-display: var(--font-baloo), ui-rounded, "Segoe UI", system-ui, sans-serif;
+  --font-display: var(--font-newsreader), Georgia, "Times New Roman", serif;
   --font-sans: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
 
   --radius-4xl: 2rem;
@@ -29,6 +29,61 @@
 
   --shadow-soft: 0 18px 50px -24px rgb(36 36 36 / 0.28);
   --shadow-lift: 0 24px 60px -28px rgb(11 111 111 / 0.35);
+  --shadow-card: 0 30px 80px -36px rgb(36 36 36 / 0.38);
+}
+
+@keyframes reveal-soft {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-soft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.reveal-soft {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 900ms cubic-bezier(0.22, 1, 0.36, 1),
+    transform 900ms cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+
+.reveal-soft.is-revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.float-soft {
+  animation: float-soft 7s ease-in-out infinite;
+}
+
+.toast-in {
+  animation: toast-in 420ms cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 
 @layer base {
@@ -51,8 +106,8 @@
   h5,
   h6 {
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: 500;
+    letter-spacing: -0.035em;
   }
 
   ::selection {
@@ -77,5 +132,10 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+
+  .reveal-soft {
+    opacity: 1;
+    transform: none;
   }
 }

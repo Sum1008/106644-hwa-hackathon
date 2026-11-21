@@ -6,6 +6,7 @@ import { ChevronRight, RotateCcw, ShieldCheck, Truck } from "lucide-react";
 import { AddToCart } from "@/components/product/add-to-cart";
 import { ProductCard } from "@/components/product/product-card";
 import { Container } from "@/components/ui/container";
+import { Reveal } from "@/components/ui/reveal";
 import {
   categoryLabels,
   getProductBySlug,
@@ -83,19 +84,26 @@ export default async function ProductPage({
       </Container>
 
       <section className="py-8 sm:py-12">
-        <Container className="grid gap-10 lg:grid-cols-2 lg:gap-16">
-          <div>
-            <div className="relative aspect-square overflow-hidden rounded-4xl border border-sand-200 bg-cream-100 shadow-soft">
+        <Container className="grid gap-12 lg:grid-cols-2 lg:gap-20">
+          <Reveal>
+            <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-sand-200 bg-cream-100 shadow-card">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_30%,rgba(255,255,255,0.8),transparent_62%)]" />
               <Image
                 src={product.images[0].src}
                 alt={product.images[0].alt}
                 fill
                 priority
                 sizes="(min-width: 1024px) 50vw, 100vw"
-                className="object-cover"
+                className={
+                  ["/images/pod.webp", "/images/hub.webp"].includes(
+                    product.images[0].src,
+                  )
+                    ? "object-contain p-10 mix-blend-multiply"
+                    : "object-cover"
+                }
               />
               {product.badge ? (
-                <span className="absolute left-5 top-5 rounded-full bg-cream-50/90 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-teal-800 backdrop-blur">
+                <span className="absolute left-5 top-5 rounded-full border border-sand-200/70 bg-cream-50/90 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.14em] text-teal-800 shadow-sm backdrop-blur">
                   {product.badge}
                 </span>
               ) : null}
@@ -106,34 +114,40 @@ export default async function ProductPage({
                 {product.images.slice(1, 4).map((image) => (
                   <div
                     key={image.src}
-                    className="relative aspect-square overflow-hidden rounded-2xl border border-sand-200 bg-cream-100"
+                    className="group relative aspect-square overflow-hidden rounded-2xl border border-sand-200 bg-cream-100 transition-colors hover:border-teal-700/30"
                   >
                     <Image
                       src={image.src}
                       alt={image.alt}
                       fill
                       sizes="160px"
-                      className="object-cover"
+                      className={
+                        ["/images/pod.webp", "/images/hub.webp"].includes(
+                          image.src,
+                        )
+                          ? "object-contain p-4 mix-blend-multiply transition-transform duration-500 group-hover:scale-105"
+                          : "object-cover transition-transform duration-500 group-hover:scale-105"
+                      }
                     />
                   </div>
                 ))}
               </div>
             ) : null}
-          </div>
+          </Reveal>
 
-          <div>
+          <Reveal delay={120}>
             <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-teal-700">
               {categoryLabels[product.category]}
             </p>
-            <h1 className="mt-3 font-display text-4xl font-bold leading-tight sm:text-5xl">
+            <h1 className="mt-3 font-display text-5xl font-medium leading-[0.98] tracking-[-0.045em] sm:text-6xl">
               {product.name}
             </h1>
             <p className="mt-2 text-base text-charcoal-600">
               {product.tagline}
             </p>
 
-            <div className="mt-5 flex items-baseline gap-3">
-              <p className="font-display text-3xl font-bold text-teal-800">
+            <div className="mt-6 flex items-baseline gap-3 border-y border-sand-200 py-4">
+              <p className="font-display text-3xl font-medium text-teal-800">
                 {formatINR(product.price)}
               </p>
               <p className="text-xs text-charcoal-400">
@@ -177,13 +191,13 @@ export default async function ProductPage({
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       <section className="border-y border-sand-200 bg-cream-100/50">
-        <Container className="grid gap-10 py-14 lg:grid-cols-2 lg:py-20">
-          <div>
+        <Container className="grid gap-10 py-16 lg:grid-cols-2 lg:py-24">
+          <Reveal>
             <h2 className="font-display text-2xl font-bold">In the box</h2>
             <ul className="mt-5 space-y-3">
               {product.inTheBox.map((item) => (
@@ -198,10 +212,12 @@ export default async function ProductPage({
                 </li>
               ))}
             </ul>
-          </div>
+          </Reveal>
 
-          <div>
-            <h2 className="font-display text-2xl font-bold">Details</h2>
+          <Reveal delay={100}>
+            <h2 className="font-display text-3xl font-medium tracking-[-0.025em]">
+              Details
+            </h2>
             <dl className="mt-5 space-y-3">
               {product.specs.map((spec) => (
                 <div
@@ -215,19 +231,23 @@ export default async function ProductPage({
                 </div>
               ))}
             </dl>
-          </div>
+          </Reveal>
         </Container>
       </section>
 
       {related.length > 0 ? (
-        <section className="py-14 sm:py-20">
+        <section className="py-16 sm:py-24">
           <Container>
-            <h2 className="font-display text-3xl font-bold">
-              You might also like
-            </h2>
-            <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-              {related.map((item) => (
-                <ProductCard key={item.id} product={item} />
+            <Reveal>
+              <h2 className="font-display text-4xl font-medium tracking-[-0.03em]">
+                You might also like
+              </h2>
+            </Reveal>
+            <div className="mt-9 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+              {related.map((item, index) => (
+                <Reveal key={item.id} delay={index * 90}>
+                  <ProductCard product={item} />
+                </Reveal>
               ))}
             </div>
           </Container>

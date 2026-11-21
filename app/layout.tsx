@@ -1,15 +1,14 @@
 import type { Metadata, Viewport } from "next";
-import { Baloo_2, DM_Sans } from "next/font/google";
+import { DM_Sans, Newsreader } from "next/font/google";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
 import { Providers } from "@/app/providers";
 import { site } from "@/lib/site";
 import "./globals.css";
 
-const baloo = Baloo_2({
+const newsreader = Newsreader({
   subsets: ["latin"],
-  variable: "--font-baloo",
-  weight: ["500", "600", "700", "800"],
+  variable: "--font-newsreader",
   display: "swap",
 });
 
@@ -69,7 +68,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${baloo.variable} ${dmSans.variable}`}>
+    <html lang="en" className={`${newsreader.variable} ${dmSans.variable}`}>
       <body className="min-h-dvh bg-cream-50 text-charcoal-900">
         <a
           href="#main"

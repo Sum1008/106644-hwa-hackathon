@@ -21,7 +21,7 @@ export function Logo({
         width={2172}
         height={724}
         priority={priority}
-        className="h-8 w-auto sm:h-9"
+        className="h-8 w-auto transition-opacity hover:opacity-80 sm:h-9"
       />
     </Link>
   );

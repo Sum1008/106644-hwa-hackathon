@@ -36,7 +36,8 @@ export function AddToCart({ product }: { product: Product }) {
 
     const variant = product.variants?.find((item) => item.id === variantId);
     toast({
-      message: `${product.name}${variant ? ` — ${variant.label}` : ""} added to cart`,
+      message: `${product.name}${variant ? ` · ${variant.label}` : ""}`,
+      image: product.images[0]?.src,
       href: "/cart",
       label: "View cart",
     });
