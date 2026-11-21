@@ -260,7 +260,7 @@ export default function HomePage() {
             <Reveal delay={100}>
               <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem] border border-sand-200 bg-cream-50 shadow-card">
                 <Image
-                  src="/images/home-map.png"
+                  src="/images/one-hub-home-map.png"
                   alt="A floor plan showing a scent trail moving between rooms"
                   fill
                   sizes="(min-width: 1024px) 46vw, 100vw"
