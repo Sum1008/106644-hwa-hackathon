@@ -194,8 +194,8 @@ export const products: Product[] = [
     ],
     images: [
       {
-        src: "/images/pod.webp",
-        alt: "A Sniffari pod on a cream surface",
+        src: "/images/floor-stand.png",
+        alt: "A weighted Sniffari floor stand ready to hold a scent pod",
       },
       {
         src: "/images/hub.webp",
@@ -239,8 +239,8 @@ export const products: Product[] = [
     ],
     images: [
       {
-        src: "/images/in-the-box.webp",
-        alt: "Scent vials in a Sniffari kit box",
+        src: "/images/scent-kit.png",
+        alt: "A Sniffari scent refill pack with three food scent vials",
       },
       {
         src: "/images/nose-touch.webp",
@@ -294,8 +294,8 @@ export const products: Product[] = [
     ],
     images: [
       {
-        src: "/images/in-the-box.webp",
-        alt: "Scent vials and pods in a Sniffari kit box",
+        src: "/images/detective.png",
+        alt: "A Detective scent pack with target and decoy scent vials",
       },
       {
         src: "/images/dog-hunt.webp",
