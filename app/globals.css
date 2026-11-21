@@ -55,22 +55,31 @@
 
 @keyframes logo-dog-walk {
   0% {
-    left: -10%;
-    transform: translateY(0) rotate(-3deg);
+    left: -12%;
+    opacity: 0;
+    transform: translateY(0);
+  }
+  8% {
+    opacity: 1;
   }
   25% {
-    transform: translateY(-2px) rotate(1deg);
+    transform: translateY(-2px);
   }
   50% {
     left: 50%;
-    transform: translateY(0) rotate(-2deg);
+    opacity: 1;
+    transform: translateY(0);
   }
   75% {
-    transform: translateY(-2px) rotate(1deg);
+    transform: translateY(-2px);
+  }
+  92% {
+    opacity: 1;
   }
   100% {
-    left: 108%;
-    transform: translateY(0) rotate(3deg);
+    left: 110%;
+    opacity: 0;
+    transform: translateY(0);
   }
 }
 
@@ -124,13 +133,14 @@
 
 .logo-dog {
   position: absolute;
-  bottom: 0;
+  bottom: -0.3rem;
   z-index: 10;
   display: flex;
   pointer-events: none;
-  filter: drop-shadow(0 1px 1px rgb(36 36 36 / 0.18));
-  animation: logo-dog-walk 9s linear infinite;
-  will-change: left, transform;
+  filter: drop-shadow(0 1px 0 var(--color-cream-50))
+    drop-shadow(0 2px 3px rgb(36 36 36 / 0.22));
+  animation: logo-dog-walk 8s linear infinite;
+  will-change: left, opacity, transform;
 }
 
 .logo-dog-coral {
@@ -138,9 +148,9 @@
 }
 
 .logo-dog-teal {
-  color: var(--color-teal-600);
-  animation-duration: 12s;
-  animation-delay: -5s;
+  color: var(--color-teal-700);
+  animation-duration: 11s;
+  animation-delay: -4s;
 }
 
 @layer base {
