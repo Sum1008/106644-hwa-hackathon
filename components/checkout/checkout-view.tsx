@@ -46,6 +46,7 @@ export function CheckoutView() {
   const resolved = resolveCartLines(lines);
   const subtotal = getCartSubtotal(resolved);
   const [submitError, setSubmitError] = useState<string | null>(null);
+  const [isRedirecting, setIsRedirecting] = useState(false);
   const clientOrderId = useRef<string | null>(null);
 
   useEffect(() => {
@@ -112,13 +113,32 @@ export function CheckoutView() {
         return;
       }
 
+      setIsRedirecting(true);
       clearCart();
       router.push(`/order/${payload.order.id}?placed=1`);
     } catch {
+      setIsRedirecting(false);
       setSubmitError(
         "We couldn’t reach the checkout. Please check your connection and try again.",
       );
     }
+  }
+
+  if (isRedirecting) {
+    return (
+      <div className="rounded-4xl border border-sand-200 bg-cream-50 p-8 text-center shadow-soft sm:p-14">
+        <h2 className="font-display text-2xl font-bold">
+          Your order is placed.
+        </h2>
+        <p className="mx-auto mt-2 max-w-md text-sm leading-relaxed text-charcoal-600">
+          Taking you to your order confirmation…
+        </p>
+        <Loader2
+          className="mx-auto mt-6 h-6 w-6 animate-spin text-teal-700"
+          aria-hidden="true"
+        />
+      </div>
+    );
   }
 
   if (isHydrated && resolved.length === 0) {
