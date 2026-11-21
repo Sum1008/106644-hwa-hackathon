@@ -121,15 +121,7 @@ export function CheckoutView() {
     }
   }
 
-  if (!isHydrated) {
-    return (
-      <div className="rounded-4xl border border-sand-200 bg-cream-50 p-10 text-center text-sm text-charcoal-400">
-        Loading checkout…
-      </div>
-    );
-  }
-
-  if (resolved.length === 0) {
+  if (isHydrated && resolved.length === 0) {
     return (
       <div className="rounded-4xl border border-sand-200 bg-cream-50 p-8 text-center shadow-soft sm:p-14">
         <h2 className="font-display text-2xl font-bold">
@@ -339,38 +331,44 @@ export function CheckoutView() {
           </Link>
         </div>
 
-        <ul className="mt-5 space-y-4">
-          {resolved.map((line) => (
-            <li
-              key={`${line.product.id}-${line.variantId ?? ""}`}
-              className="flex gap-3"
-            >
-              <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-cream-100">
-                <Image
-                  src={line.image}
-                  alt={line.product.name}
-                  fill
-                  sizes="56px"
-                  className="object-cover"
-                />
-              </div>
-              <div className="flex-1">
-                <p className="text-sm font-semibold">{line.product.name}</p>
-                {line.variantLabel ? (
+        {isHydrated ? (
+          <ul className="mt-5 space-y-4">
+            {resolved.map((line) => (
+              <li
+                key={`${line.product.id}-${line.variantId ?? ""}`}
+                className="flex gap-3"
+              >
+                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-xl bg-cream-100">
+                  <Image
+                    src={line.image}
+                    alt={line.product.name}
+                    fill
+                    sizes="56px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex-1">
+                  <p className="text-sm font-semibold">{line.product.name}</p>
+                  {line.variantLabel ? (
+                    <p className="text-xs text-charcoal-400">
+                      {line.variantLabel}
+                    </p>
+                  ) : null}
                   <p className="text-xs text-charcoal-400">
-                    {line.variantLabel}
+                    Qty {line.quantity}
                   </p>
-                ) : null}
-                <p className="text-xs text-charcoal-400">
-                  Qty {line.quantity}
+                </div>
+                <p className="text-sm font-semibold">
+                  {formatINR(line.lineTotal)}
                 </p>
-              </div>
-              <p className="text-sm font-semibold">
-                {formatINR(line.lineTotal)}
-              </p>
-            </li>
-          ))}
-        </ul>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p className="mt-5 text-sm text-charcoal-400">
+            Loading your cart items…
+          </p>
+        )}
 
         <dl className="mt-5 space-y-3 border-t border-sand-200 pt-4 text-sm">
           <div className="flex justify-between">
@@ -404,13 +402,15 @@ export function CheckoutView() {
           type="submit"
           size="lg"
           className="mt-5 w-full"
-          disabled={isSubmitting}
+          disabled={isSubmitting || !isHydrated}
         >
           {isSubmitting ? (
             <>
               <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
               Placing order…
             </>
+          ) : !isHydrated ? (
+            "Loading checkout…"
           ) : (
             <>
               Place order · {formatINR(subtotal)}
