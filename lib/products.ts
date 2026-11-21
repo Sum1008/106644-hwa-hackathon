@@ -54,7 +54,7 @@ export const products: Product[] = [
         alt: "Sniffari scent pod with a coral nose pad",
       },
       {
-        src: "/images/home-map.webp",
+        src: "/images/home-map.png",
         alt: "A scent trail moving through an apartment floor plan",
       },
     ],
@@ -107,7 +107,7 @@ export const products: Product[] = [
         alt: "Sniffari hub and three pods with treats",
       },
       {
-        src: "/images/home-map.webp",
+        src: "/images/home-map.png",
         alt: "A multi-room scent trail on a floor plan",
       },
       {
@@ -206,7 +206,7 @@ export const products: Product[] = [
         alt: "Sniffari kit contents",
       },
       {
-        src: "/images/home-map.webp",
+        src: "/images/home-map.png",
         alt: "A scent trail through a home floor plan",
       },
     ],
@@ -302,7 +302,7 @@ export const products: Product[] = [
         alt: "A dog sniffing a Sniffari pod on a wall",
       },
       {
-        src: "/images/home-map.webp",
+        src: "/images/home-map.png",
         alt: "A scent trail moving through multiple rooms",
       },
       {
