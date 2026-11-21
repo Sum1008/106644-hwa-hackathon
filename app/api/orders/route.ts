@@ -20,7 +20,7 @@ export const dynamic = "force-dynamic";
 
 export async function POST(request: Request) {
   const ip = getClientIp(request);
-  const limit = rateLimit(`orders:${ip}`, 10, 60_000);
+  const limit = rateLimit(`orders:${ip}`, 30, 60_000);
 
   if (!limit.allowed) {
     return errorResponse(

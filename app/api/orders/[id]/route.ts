@@ -15,7 +15,7 @@ export async function GET(
 ) {
   const { id } = await params;
   const ip = getClientIp(request);
-  const limit = rateLimit(`track:${ip}`, 30, 60_000);
+  const limit = rateLimit(`track:${ip}`, 60, 60_000);
 
   if (!limit.allowed) {
     return errorResponse(
