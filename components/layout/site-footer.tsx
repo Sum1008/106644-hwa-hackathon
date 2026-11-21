@@ -25,8 +25,17 @@ const columns = [
     title: "Support",
     links: [
       { href: "/track", label: "Track order" },
+      { href: "/contact", label: "Contact us" },
+      { href: "/faq", label: "FAQ" },
       { href: "/cart", label: "Your cart" },
-      { href: "/checkout", label: "Checkout" },
+    ],
+  },
+  {
+    title: "Legal",
+    links: [
+      { href: "/privacy", label: "Privacy policy" },
+      { href: "/terms", label: "Terms & conditions" },
+      { href: "/shipping-policy", label: "Shipping & returns" },
     ],
   },
 ];
@@ -35,7 +44,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-sand-200 bg-cream-100/60">
       <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-charcoal-600">

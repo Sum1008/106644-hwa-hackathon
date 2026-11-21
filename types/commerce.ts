@@ -71,6 +71,17 @@ export interface OrderItem {
   image: string;
 }
 
+export interface ContactMessage {
+  id: string;
+  createdAt: string;
+  name: string;
+  email: string;
+  phone?: string;
+  topic: "order" | "product" | "returns" | "other";
+  orderId?: string;
+  message: string;
+}
+
 export interface Order {
   id: string;
   trackingId: string;

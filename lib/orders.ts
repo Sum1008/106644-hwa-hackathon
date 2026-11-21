@@ -1,15 +1,11 @@
 import { get, put } from "@vercel/blob";
+import { hasBlobStorage } from "@/lib/storage";
 import type { Order } from "@/types/commerce";
 
 const memoryOrders = new Map<string, Order>();
 const memoryIdempotency = new Map<string, string>();
 
-export function hasBlobStorage() {
-  return Boolean(
-    process.env.BLOB_READ_WRITE_TOKEN ||
-      (process.env.BLOB_STORE_ID && process.env.VERCEL_OIDC_TOKEN),
-  );
-}
+export { hasBlobStorage };
 
 async function readJsonBlob<T>(pathname: string): Promise<T | null> {
   const result = await get(pathname, { access: "private", useCache: false });
