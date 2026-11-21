@@ -13,6 +13,16 @@ export function generateOrderId(now = new Date()) {
   return `SNF-${year}${month}${day}-${suffix}`;
 }
 
+export function generateTrackingId() {
+  const bytes = crypto.getRandomValues(new Uint8Array(6));
+  const suffix = Array.from(
+    bytes,
+    (byte) => ALPHABET[byte % ALPHABET.length],
+  ).join("");
+
+  return `TRK-${suffix}`;
+}
+
 export function getEstimatedDelivery(now = new Date()) {
   const date = new Date(now);
   date.setDate(date.getDate() + 5);

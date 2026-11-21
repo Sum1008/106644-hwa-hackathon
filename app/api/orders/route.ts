@@ -5,7 +5,11 @@ import {
   jsonResponse,
   readJson,
 } from "@/lib/api";
-import { generateOrderId, getEstimatedDelivery } from "@/lib/order-id";
+import {
+  generateOrderId,
+  generateTrackingId,
+  getEstimatedDelivery,
+} from "@/lib/order-id";
 import {
   getIdempotentOrderId,
   getOrder,
@@ -78,6 +82,7 @@ export async function POST(request: Request) {
 
     const order: Order = {
       id: generateOrderId(now),
+      trackingId: generateTrackingId(),
       clientOrderId: data.clientOrderId,
       createdAt: now.toISOString(),
       status: "confirmed",

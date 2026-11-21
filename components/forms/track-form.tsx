@@ -9,6 +9,7 @@ import { formatINR } from "@/lib/pricing";
 
 interface TrackedOrder {
   id: string;
+  trackingId: string;
   status: string;
   createdAt: string;
   estimatedDelivery: string;
@@ -132,6 +133,18 @@ export function TrackForm({
                 Order
               </p>
               <p className="mt-1 font-display text-2xl font-bold">{order.id}</p>
+              <p className="mt-1 text-xs text-charcoal-400">
+                {order.trackingId ? (
+                  <>
+                    Tracking ID{" "}
+                    <span className="font-semibold text-teal-800">
+                      {order.trackingId}
+                    </span>
+                  </>
+                ) : (
+                  "Tracking ID available on your order receipt"
+                )}
+              </p>
               <p className="mt-1 text-xs text-charcoal-400">
                 Placed {formatDate(order.createdAt)} · delivering to{" "}
                 {order.shipping.city}, {order.shipping.state}

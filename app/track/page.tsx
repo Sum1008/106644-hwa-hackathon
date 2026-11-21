@@ -27,7 +27,7 @@ export default async function TrackPage({
           </h1>
           <p className="mt-4 text-sm leading-relaxed text-charcoal-600">
             Enter your order ID and the email you used at checkout. We’ll show
-            you the latest status and delivery estimate.
+            you the tracking ID, the latest status, and the delivery estimate.
           </p>
         </div>
 

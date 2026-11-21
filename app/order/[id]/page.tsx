@@ -54,13 +54,18 @@ export default async function OrderPage({
             </h1>
             <p className="mt-4 text-base leading-relaxed text-charcoal-600">
               {placedNow
-                ? "Your Sniffari order is confirmed. We’ll pack it and send tracking updates to your email."
+                ? "Your Sniffari order is confirmed. We’ll pack it, and your tracking ID below shows the status as the parcel moves."
                 : "Here are the details we have for this order."}
             </p>
             <div className="mt-6 flex flex-wrap items-center gap-2 text-sm text-charcoal-600">
               <span className="rounded-full bg-cream-50 px-3 py-1.5 font-semibold">
-                {order.id}
+                Order {order.id}
               </span>
+              {order.trackingId ? (
+                <span className="rounded-full bg-teal-50 px-3 py-1.5 font-semibold text-teal-800">
+                  Tracking {order.trackingId}
+                </span>
+              ) : null}
               <span className="rounded-full bg-cream-50 px-3 py-1.5">
                 Placed {formatDate(order.createdAt)}
               </span>
@@ -206,8 +211,10 @@ export default async function OrderPage({
                   body: "Pods, hub, and scents are checked and packed by hand.",
                 },
                 {
-                  title: "You get a dispatch note",
-                  body: "We email tracking details as soon as it leaves us.",
+                  title: "It gets a tracking ID",
+                  body: order.trackingId
+                    ? `Your tracking ID ${order.trackingId} follows the parcel from our shelf to your door.`
+                    : "Your tracking ID follows the parcel from our shelf to your door.",
                 },
                 {
                   title: "Pay on delivery",
@@ -229,7 +236,8 @@ export default async function OrderPage({
             </ol>
             <div className="mt-6 border-t border-sand-200 pt-4">
               <p className="text-xs text-charcoal-400">
-                Need help? Keep your order ID handy and use the tracking page.
+                Need help? Keep your order ID and tracking ID handy, then use the
+                tracking page.
               </p>
               <ButtonLink
                 href="/track"

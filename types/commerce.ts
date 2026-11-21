@@ -73,6 +73,7 @@ export interface OrderItem {
 
 export interface Order {
   id: string;
+  trackingId: string;
   clientOrderId?: string;
   createdAt: string;
   status: OrderStatus;
