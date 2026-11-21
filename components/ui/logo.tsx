@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
+import { Dog } from "lucide-react";
 import { cn } from "@/lib/cn";
 
 export function Logo({
@@ -13,7 +14,10 @@ export function Logo({
     <Link
       href="/"
       aria-label="Sniffari home"
-      className={cn("inline-flex items-center", className)}
+      className={cn(
+        "relative inline-flex items-center overflow-hidden align-middle",
+        className,
+      )}
     >
       <Image
         src="/images/sniffari-logo.png"
@@ -23,6 +27,18 @@ export function Logo({
         priority={priority}
         className="h-8 w-auto transition-opacity hover:opacity-80 sm:h-9"
       />
+      <span
+        className="logo-dog logo-dog-coral motion-reduce:hidden"
+        aria-hidden="true"
+      >
+        <Dog className="h-3.5 w-3.5" strokeWidth={2.2} />
+      </span>
+      <span
+        className="logo-dog logo-dog-teal motion-reduce:hidden"
+        aria-hidden="true"
+      >
+        <Dog className="h-3 w-3" strokeWidth={2.2} />
+      </span>
     </Link>
   );
 }
