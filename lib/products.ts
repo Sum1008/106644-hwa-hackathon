@@ -228,13 +228,13 @@ export const products: Product[] = [
       "3 vials per pack",
       "Pet-safe food scents",
       "Works with every pod",
-      "Choose Chicken, Cheese, Pedigree, or Mixed",
+      "Choose Chicken, Cheese, or Peanut",
     ],
     inTheBox: [{ label: "Food scent vials", qty: 3 }],
     specs: [
       { label: "Vials per pack", value: "3" },
       { label: "Sessions per vial", value: "Up to 30" },
-      { label: "Scents", value: "Chicken, Cheese, Pedigree, Mixed" },
+      { label: "Scents", value: "Chicken, Cheese, Peanut" },
       { label: "Compatibility", value: "All Sniffari pods" },
     ],
     images: [
@@ -258,8 +258,7 @@ export const products: Product[] = [
     variants: [
       { id: "chicken", label: "Chicken" },
       { id: "cheese", label: "Cheese" },
-      { id: "pedigree", label: "Pedigree" },
-      { id: "mixed", label: "Mixed pack" },
+      { id: "mixed", label: "Peanut" },
     ],
     stock: "in_stock",
   },
