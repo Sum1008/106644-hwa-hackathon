@@ -7,6 +7,7 @@ import {
   Sparkles,
   VolumeX,
 } from "lucide-react";
+import { DayWithSniffari } from "@/components/home/day-with-sniffari";
 import { ProductCard } from "@/components/product/product-card";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
@@ -228,6 +229,8 @@ export default function HomePage() {
           </Reveal>
         </Container>
       </section>
+
+      <DayWithSniffari />
 
       <section
         id="how-it-works"
