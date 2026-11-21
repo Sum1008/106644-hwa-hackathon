@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import { MoonStar, SunMedium } from "lucide-react";
 
 const moments = [
@@ -62,93 +62,63 @@ const moments = [
   },
 ] as const;
 
-const palette = [
-  { at: 0, top: "#fff3dc", bottom: "#dcebe7" },
-  { at: 0.42, top: "#dbe8e7", bottom: "#a9c4c4" },
-  { at: 0.7, top: "#69858b", bottom: "#38545f" },
-  { at: 1, top: "#a45f47", bottom: "#efb274" },
-];
-
-function mixColor(from: string, to: string, amount: number) {
-  const parse = (value: string) => ({
-    red: Number.parseInt(value.slice(1, 3), 16),
-    green: Number.parseInt(value.slice(3, 5), 16),
-    blue: Number.parseInt(value.slice(5, 7), 16),
-  });
-  const start = parse(from);
-  const end = parse(to);
-  const channel = (key: "red" | "green" | "blue") =>
-    Math.round(start[key] + (end[key] - start[key]) * amount);
-  return `rgb(${channel("red")}, ${channel("green")}, ${channel("blue")})`;
-}
-
-function skyColors(progress: number) {
-  const bounded = Math.max(0, Math.min(1, progress));
-  const nextIndex = palette.findIndex((color) => color.at >= bounded);
-  const endIndex = nextIndex === -1 ? palette.length - 1 : nextIndex;
-  const start = palette[Math.max(0, endIndex - 1)];
-  const end = palette[endIndex];
-  const range = end.at - start.at;
-  const amount = range === 0 ? 0 : (bounded - start.at) / range;
-  return {
-    top: mixColor(start.top, end.top, amount),
-    bottom: mixColor(start.bottom, end.bottom, amount),
-  };
-}
+const skyByMoment = {
+  departure: {
+    top: "#fff3dc",
+    bottom: "#dcebe7",
+    sun: "12%",
+    isDark: false,
+    isEvening: false,
+  },
+  nap: {
+    top: "#f7ead7",
+    bottom: "#cddfdf",
+    sun: "28%",
+    isDark: false,
+    isEvening: false,
+  },
+  midday: {
+    top: "#d7e6e8",
+    bottom: "#8fb7bd",
+    sun: "47%",
+    isDark: false,
+    isEvening: false,
+  },
+  quiet: {
+    top: "#6e858b",
+    bottom: "#3e5963",
+    sun: "66%",
+    isDark: true,
+    isEvening: false,
+  },
+  "wind-down": {
+    top: "#9d5944",
+    bottom: "#e4a36f",
+    sun: "83%",
+    isDark: true,
+    isEvening: true,
+  },
+} as const;
 
 export function DayWithSniffari() {
-  const sectionRef = useRef<HTMLElement | null>(null);
   const [activeId, setActiveId] = useState<(typeof moments)[number]["id"]>(
     moments[0].id,
   );
-  const [progress, setProgress] = useState(0);
   const activeMoment = useMemo(
     () => moments.find((moment) => moment.id === activeId) ?? moments[0],
     [activeId],
   );
-  const colors = useMemo(() => skyColors(progress), [progress]);
-  const isDark = progress > 0.57;
-  const isEvening = progress > 0.82;
-
-  useEffect(() => {
-    let frame = 0;
-
-    const updateProgress = () => {
-      const section = sectionRef.current;
-      if (!section) return;
-      const rect = section.getBoundingClientRect();
-      const scrollDistance = Math.max(
-        1,
-        section.offsetHeight - window.innerHeight,
-      );
-      const nextProgress = Math.max(0, Math.min(1, -rect.top / scrollDistance));
-      setProgress(nextProgress);
-    };
-
-    const onScroll = () => {
-      window.cancelAnimationFrame(frame);
-      frame = window.requestAnimationFrame(updateProgress);
-    };
-
-    updateProgress();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    window.addEventListener("resize", onScroll);
-
-    return () => {
-      window.cancelAnimationFrame(frame);
-      window.removeEventListener("scroll", onScroll);
-      window.removeEventListener("resize", onScroll);
-    };
-  }, []);
+  const colors = skyByMoment[activeMoment.id];
+  const isDark = colors.isDark;
+  const isEvening = colors.isEvening;
 
   return (
     <section
-      ref={sectionRef}
       id="a-day-with-sniffari"
-      className="relative h-[220vh] scroll-mt-20 overflow-hidden transition-colors duration-700"
+      className="relative scroll-mt-20 overflow-hidden transition-colors duration-700"
       style={{ backgroundColor: colors.bottom }}
     >
-      <div className="sticky top-0 flex min-h-dvh items-center overflow-hidden py-20 sm:py-24">
+      <div className="relative flex items-center overflow-hidden py-20 sm:py-24">
         <div
           className="pointer-events-none absolute inset-0 transition-colors duration-700"
           style={{
@@ -159,15 +129,15 @@ export function DayWithSniffari() {
         <div
           className="pointer-events-none absolute top-[12%] h-24 w-24 rounded-full bg-[#ffe1a3] opacity-80 blur-[1px] transition-all duration-700 sm:h-36 sm:w-36"
           style={{
-            left: `${10 + progress * 66}%`,
-            opacity: progress > 0.82 ? 0.12 : 0.45 + progress * 0.35,
-            transform: `translate(-50%, ${progress * 160}px)`,
+            left: colors.sun,
+            opacity: isEvening ? 0.12 : isDark ? 0.28 : 0.72,
+            transform: "translate(-50%, 0)",
           }}
         />
         {isEvening ? (
           <div
             className="pointer-events-none absolute top-[13%] h-20 w-20 rounded-full bg-cream-50/80 shadow-[0_0_60px_rgba(255,255,255,0.35)] transition-all duration-700 sm:h-28 sm:w-28"
-            style={{ left: `${10 + progress * 66}%`, transform: "translate(-50%, 0)" }}
+            style={{ left: colors.sun, transform: "translate(-50%, 0)" }}
           >
             <MoonStar className="absolute inset-0 m-auto h-7 w-7 text-teal-800/50 sm:h-9 sm:w-9" />
           </div>
@@ -175,7 +145,7 @@ export function DayWithSniffari() {
           <SunMedium
             className="pointer-events-none absolute top-[12%] h-12 w-12 text-[#fff0ba] transition-all duration-700 sm:h-16 sm:w-16"
             style={{
-              left: `${10 + progress * 66}%`,
+              left: colors.sun,
               transform: "translate(-50%, 0)",
             }}
           />
@@ -230,7 +200,6 @@ export function DayWithSniffari() {
                         type="button"
                         aria-pressed={selected}
                         onClick={() => setActiveId(moment.id)}
-                        onMouseEnter={() => setActiveId(moment.id)}
                         onFocus={() => setActiveId(moment.id)}
                         className="group flex flex-col items-center px-2 text-center"
                       >
