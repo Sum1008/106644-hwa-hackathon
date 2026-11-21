@@ -2,6 +2,7 @@ import Link from "next/link";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
 import { Logo } from "@/components/ui/logo";
+import { CartButton } from "@/components/layout/cart-button";
 import { site } from "@/lib/site";
 
 export function SiteHeader() {
@@ -25,9 +26,12 @@ export function SiteHeader() {
           ))}
         </nav>
 
-        <ButtonLink href="/#products" size="sm">
-          Shop kits
-        </ButtonLink>
+        <div className="flex items-center gap-2 sm:gap-3">
+          <CartButton />
+          <ButtonLink href="/shop" size="sm">
+            Shop kits
+          </ButtonLink>
+        </div>
       </Container>
     </header>
   );

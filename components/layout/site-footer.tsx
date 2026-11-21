@@ -7,17 +7,26 @@ const columns = [
   {
     title: "Explore",
     links: [
+      { href: "/shop", label: "Shop all" },
       { href: "/#how-it-works", label: "How it works" },
       { href: "/#levels", label: "Levels" },
-      { href: "/#products", label: "The range" },
     ],
   },
   {
     title: "The range",
     links: [
-      { href: "/#products", label: "Starter Kit" },
-      { href: "/#products", label: "Explore Kit" },
-      { href: "/#products", label: "Scents & add-ons" },
+      { href: "/products/starter-kit", label: "Starter Kit" },
+      { href: "/products/explore-kit", label: "Explore Kit" },
+      { href: "/products/extra-pod", label: "Extra Pod" },
+      { href: "/products/scent-refill-pack", label: "Scent Refills" },
+    ],
+  },
+  {
+    title: "Support",
+    links: [
+      { href: "/track", label: "Track order" },
+      { href: "/cart", label: "Your cart" },
+      { href: "/checkout", label: "Checkout" },
     ],
   },
 ];
@@ -26,7 +35,7 @@ export function SiteFooter() {
   return (
     <footer className="border-t border-sand-200 bg-cream-100/60">
       <Container className="py-14">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <Logo />
             <p className="mt-5 max-w-sm text-sm leading-relaxed text-charcoal-600">

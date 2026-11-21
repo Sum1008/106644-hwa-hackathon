@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 import { ButtonLink } from "@/components/ui/button";
 import { Container } from "@/components/ui/container";
+import { ProductCard } from "@/components/product/product-card";
+import { products } from "@/lib/products";
 
 const trust = [
   { icon: Home, label: "Made for apartment living" },
@@ -68,33 +70,6 @@ const levels = [
   },
 ];
 
-const products = [
-  {
-    name: "Starter Kit",
-    contents: "1 hub + 3 pods + 3 food scent packs",
-    price: "₹8,999",
-    image: "/images/in-the-box.webp",
-    alt: "Starter Kit box with hub, pods, wall plates, and scent vials",
-    badge: "Start here",
-  },
-  {
-    name: "Explore Kit",
-    contents: "1 hub + 6 pods + 3 food scents + detective pack",
-    price: "₹13,999",
-    image: "/images/hero.webp",
-    alt: "Sniffari hub and three pods with treats",
-    badge: "Whole-home",
-  },
-  {
-    name: "Scents & add-ons",
-    contents: "Refills, detective scents, pods, and floor stands",
-    price: "From ₹499",
-    image: "/images/pod.webp",
-    alt: "A single Sniffari pod with a coral nose pad",
-    badge: "Expand",
-  },
-];
-
 export default function HomePage() {
   return (
     <>
@@ -121,7 +96,7 @@ export default function HomePage() {
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              <ButtonLink href="#products" size="lg">
+              <ButtonLink href="/shop" size="lg">
                 Shop kits
                 <ArrowRight className="h-4 w-4" />
               </ButtonLink>
@@ -349,49 +324,20 @@ export default function HomePage() {
           </div>
 
           <div className="mt-12 grid gap-5 md:grid-cols-3">
-            {products.map((product) => (
-              <article
-                key={product.name}
-                className="group overflow-hidden rounded-[1.75rem] border border-sand-200 bg-cream-50 shadow-soft transition-transform duration-300 hover:-translate-y-1"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden bg-cream-100">
-                  <Image
-                    src={product.image}
-                    alt={product.alt}
-                    fill
-                    sizes="(min-width: 768px) 33vw, 100vw"
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  />
-                  <span className="absolute left-4 top-4 rounded-full bg-coral-500 px-3 py-1 text-[11px] font-bold uppercase tracking-wide text-charcoal-900">
-                    {product.badge}
-                  </span>
-                </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold">{product.name}</h3>
-                  <p className="mt-1 text-sm leading-relaxed text-charcoal-600">
-                    {product.contents}
-                  </p>
-                  <div className="mt-5 flex items-end justify-between gap-4">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-wide text-charcoal-400">
-                        From
-                      </p>
-                      <p className="font-display text-2xl font-bold text-teal-700">
-                        {product.price}
-                      </p>
-                    </div>
-                    <span className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-sand-200 text-teal-700">
-                      <ArrowRight className="h-4 w-4" />
-                    </span>
-                  </div>
-                </div>
-              </article>
+            {products.slice(0, 3).map((product) => (
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
 
-          <p className="mt-6 text-sm text-charcoal-400">
-            All prices include taxes. Free shipping across India.
-          </p>
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-sm text-charcoal-400">
+              All prices include taxes. Free shipping across India.
+            </p>
+            <ButtonLink href="/shop" variant="secondary">
+              View all products
+              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+            </ButtonLink>
+          </div>
         </Container>
       </section>
 
@@ -413,13 +359,13 @@ export default function HomePage() {
                 to a reward — even when you are not there.
               </p>
               <ButtonLink
-                href="#products"
+                href="/shop"
                 variant="coral"
                 size="lg"
                 className="mt-8"
               >
                 Explore the range
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-4 w-4" aria-hidden="true" />
               </ButtonLink>
             </div>
           </div>
